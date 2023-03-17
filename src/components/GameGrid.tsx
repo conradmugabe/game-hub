@@ -10,9 +10,9 @@ function GameGrid() {
     <>
       {error && <Text>{error}</Text>}
       <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        gap={10}
-        padding={10}
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        gap={3}
+        padding={{ base: 3, lg: 10}}
       >
         {isLoading &&
           [...Array(15).keys()].map((i) => (
