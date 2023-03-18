@@ -7,24 +7,15 @@ import GameCardContainer from './GameCardContainer';
 import SkeletonGameCard from './SkeletonGameCard';
 
 interface Props {
-  gameQuery: GameQuery
-  
+  gameQuery: GameQuery;
 }
 
 function GameGrid({ gameQuery }: Props) {
-  const {
-    data: games,
-    error,
-    isLoading,
-  } = useGames(gameQuery);
+  const { data: games, error, isLoading } = useGames(gameQuery);
   return (
     <>
       {error && <Text>{error}</Text>}
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-        gap={3}
-        padding={{ base: 3, lg: 10 }}
-      >
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 5 }} gap={3}>
         {isLoading &&
           [...Array(15).keys()].map((i) => (
             <GameCardContainer key={i}>
