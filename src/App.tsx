@@ -5,6 +5,7 @@ import GameHeading from "./components/GameHeading";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
+import SelectedFilters from "./components/SelectedFilters";
 import SortSelector from "./components/SortSelector";
 import { Platform } from "./hooks/useGames";
 import { Genre } from "./hooks/useGenres";
@@ -52,6 +53,10 @@ function App() {
               setGameQuery({ ...gameQuery, sortOrder })
             }
             selectedSortOrder={gameQuery.sortOrder}
+          />
+          <SelectedFilters
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenre={gameQuery.genre}
           />
         </Flex>
         <GameGrid gameQuery={gameQuery} />
