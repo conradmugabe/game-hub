@@ -16,10 +16,12 @@ function GenreListItem({ genre, selectedGenre, onSelectGenre }: Props) {
           src={getCroppedImageUrl(genre.image_background)}
           borderRadius={8}
           boxSize={8}
+          objectFit="cover"
         />
         <Button
           variant="link"
-          fontSize="lg"
+          whiteSpace="normal"
+          textAlign="left"
           onClick={() => onSelectGenre(genre)}
           fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
         >
