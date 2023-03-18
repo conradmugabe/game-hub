@@ -1,6 +1,6 @@
-import { AxiosRequestConfig, CanceledError } from 'axios';
-import { useEffect, useState } from 'react';
-import apiClientService from '../services/api.client.service';
+import { AxiosRequestConfig, CanceledError } from "axios";
+import { useEffect, useState } from "react";
+import apiClientService from "../services/api.client.service";
 
 interface GetResponse<T> {
   count: number;
@@ -13,7 +13,7 @@ function useData<T>(
   deps?: any[]
 ) {
   const [data, setData] = useState<T[]>([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
 
   useEffect(

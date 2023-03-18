@@ -1,7 +1,7 @@
-import { Heading, List } from '@chakra-ui/react';
-import useGenres, { Genre } from '../hooks/useGenres';
-import GenreListItem from './GenreListItem';
-import SkeletonGenreListItem from './SkeletonGenreListItem';
+import { Heading, List } from "@chakra-ui/react";
+import useGenres, { Genre } from "../hooks/useGenres";
+import GenreListItem from "./GenreListItem";
+import SkeletonGenreListItem from "./SkeletonGenreListItem";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
