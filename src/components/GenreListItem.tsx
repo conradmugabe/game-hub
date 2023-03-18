@@ -1,6 +1,6 @@
-import { Button, HStack, Image, ListItem } from '@chakra-ui/react';
-import { Genre } from '../hooks/useGenres';
-import getCroppedImageUrl from '../services/image.url.service';
+import { Button, HStack, Image, ListItem } from "@chakra-ui/react";
+import { Genre } from "../hooks/useGenres";
+import getCroppedImageUrl from "../services/image.url.service";
 
 interface Props {
   genre: Genre;
@@ -23,7 +23,7 @@ function GenreListItem({ genre, selectedGenre, onSelectGenre }: Props) {
           whiteSpace="normal"
           textAlign="left"
           onClick={() => onSelectGenre(genre)}
-          fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
+          fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
         >
           {genre.name}
         </Button>

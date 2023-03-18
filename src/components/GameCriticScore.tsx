@@ -1,11 +1,11 @@
-import { Badge } from '@chakra-ui/react';
+import { Badge } from "@chakra-ui/react";
 
 interface Props {
   score: number;
 }
 
 function GameCriticScore({ score }: Props) {
-  const colorScheme = score > 75 ? 'green' : score > 60 ? 'yellow' : '';
+  const colorScheme = score > 75 ? "green" : score > 60 ? "yellow" : "";
   return (
     <Badge
       colorScheme={colorScheme}
