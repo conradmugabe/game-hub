@@ -5,9 +5,10 @@ import SkeletonGenreListItem from './SkeletonGenreListItem';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-function GenreList({ onSelectGenre }: Props) {
+function GenreList({ selectedGenre, onSelectGenre }: Props) {
   const { data: genres, isLoading, error } = useGenres();
 
   if (error) return null;
@@ -22,6 +23,7 @@ function GenreList({ onSelectGenre }: Props) {
           <GenreListItem
             key={genre.id}
             genre={genre}
+            selectedGenre={selectedGenre}
             onSelectGenre={onSelectGenre}
           />
         ))}
