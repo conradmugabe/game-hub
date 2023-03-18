@@ -22,3 +22,6 @@ jobs:
 
       - name: Checking Code Formatting 🎩👔👞
         run: npm run format:check
+
+      - name: Checking Project Build 🔨👷🏾‍♀️⛏️
+        run: npm run build
