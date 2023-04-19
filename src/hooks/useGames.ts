@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { GameQuery } from "../App";
-import apiClientService from "../services/api.client.service";
-import { FetchResponse } from "../services/api.client.service";
+import HttpService, { FetchResponse } from "../services/api.client.service";
 import { Platform } from "./usePlatforms";
 
 export interface Game {
@@ -14,20 +13,20 @@ export interface Game {
   rating_top: number;
 }
 
+const httpService = new HttpService<Game>("/games");
+
 const useGames = (gameQuery: GameQuery) =>
   useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: () =>
-      apiClientService
-        .get<FetchResponse<Game>>("/games", {
-          params: {
-            genres: gameQuery.genre?.id,
-            parent_platforms: gameQuery.platform?.id,
-            ordering: gameQuery.sortOrder,
-            search: gameQuery.searchText,
-          },
-        })
-        .then((res) => res.data),
+      httpService.getMany({
+        params: {
+          genres: gameQuery.genre?.id,
+          parent_platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortOrder,
+          search: gameQuery.searchText,
+        },
+      }),
   });
 
 export default useGames;
