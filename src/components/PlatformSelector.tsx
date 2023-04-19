@@ -11,12 +11,16 @@ import { Platform } from "../hooks/usePlatforms";
 import usePlatforms from "../hooks/usePlatforms";
 
 interface Props {
-  onSelectPlatform: (platform: Platform | null) => void;
-  selectedPlatform: Platform | null;
+  onSelectPlatform: (platform?: Platform) => void;
+  selectedPlatformId?: number;
 }
 
-function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
+function PlatformSelector({ onSelectPlatform, selectedPlatformId }: Props) {
   const { data, isLoading, error } = usePlatforms();
+
+  const selectedPlatform = data?.results.find(
+    (p) => p.id === selectedPlatformId
+  );
 
   if (error) return null;
 
@@ -29,9 +33,7 @@ function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
       </MenuButton>
       <MenuList>
         {selectedPlatform?.name && (
-          <MenuItem onClick={() => onSelectPlatform(null)}>
-            All Platforms
-          </MenuItem>
+          <MenuItem onClick={() => onSelectPlatform()}>All Platforms</MenuItem>
         )}
         {data?.results.map((platform) => (
           <MenuItem

@@ -6,11 +6,11 @@ import SkeletonGenreListItem from "./SkeletonGenreListItem";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-function GenreList({ selectedGenre, onSelectGenre }: Props) {
-  const { data: genres, isLoading, error } = useGenres();
+function GenreList({ selectedGenreId, onSelectGenre }: Props) {
+  const { data, isLoading, error } = useGenres();
 
   if (error) return null;
 
@@ -24,11 +24,11 @@ function GenreList({ selectedGenre, onSelectGenre }: Props) {
           {isLoading &&
             [...Array(30).keys()].map((i) => <SkeletonGenreListItem key={i} />)}
 
-          {genres?.results.map((genre) => (
+          {data?.results.map((genre) => (
             <GenreListItem
               key={genre.id}
               genre={genre}
-              selectedGenre={selectedGenre}
+              selectedGenreId={selectedGenreId}
               onSelectGenre={onSelectGenre}
             />
           ))}
