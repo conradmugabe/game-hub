@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Button, SimpleGrid, Text } from "@chakra-ui/react";
+import { Center, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import { GameQuery } from "../App";
 import useGames from "../hooks/useGames";
@@ -22,10 +23,22 @@ function GameGrid({ gameQuery }: Props) {
     isLoading,
   } = useGames(gameQuery);
 
+  const fetchedGamesCount =
+    data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   if (error) return <Text>{error.message}</Text>;
 
   return (
-    <>
+    <InfiniteScroll
+      dataLength={fetchedGamesCount}
+      hasMore={!!hasNextPage}
+      next={fetchNextPage}
+      loader={
+        <Center>
+          <Spinner size="xl" />
+        </Center>
+      }
+    >
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={6}>
         {isLoading &&
           [...Array(15).keys()].map((i) => (
@@ -43,12 +56,7 @@ function GameGrid({ gameQuery }: Props) {
           </React.Fragment>
         ))}
       </SimpleGrid>
-      {hasNextPage && (
-        <Button onClick={() => fetchNextPage()}>
-          {isFetchingNextPage ? "Loading..." : "Load more"}
-        </Button>
-      )}
-    </>
+    </InfiniteScroll>
   );
 }
 
