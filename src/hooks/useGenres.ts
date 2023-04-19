@@ -1,3 +1,4 @@
+import ms from "ms";
 import { useQuery } from "@tanstack/react-query";
 
 import HttpService from "../services/api.client.service";
@@ -14,7 +15,7 @@ const useGenres = () =>
   useQuery({
     queryKey: ["genres"],
     queryFn: httpService.getMany,
-    staleTime: 24 * 60 * 60 * 1000, // 24 hours hours * minutes * seconds * milliseconds
+    staleTime: ms("24h"),
   });
 
 export default useGenres;
