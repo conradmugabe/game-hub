@@ -8,7 +8,7 @@ export interface Platform {
   slug: string;
 }
 
-const httpService = new HttpService<Platform>("/platforms");
+const httpService = new HttpService<Platform>("/platforms/lists/parents");
 
 const usePlatforms = () =>
   useQuery({
