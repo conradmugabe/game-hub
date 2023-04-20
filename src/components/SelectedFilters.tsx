@@ -1,13 +1,11 @@
 import { HStack, Tag, TagCloseButton, TagLabel } from "@chakra-ui/react";
+
 import useGenre from "../hooks/useGenre";
-import { Genre } from "../hooks/useGenres";
+import useGameQueryStore from "../store";
 
-interface Props {
-  onSelectGenre: (genre?: Genre) => void;
-  selectedGenreId?: number;
-}
-
-function SelectedFilters({ selectedGenreId, onSelectGenre }: Props) {
+function SelectedFilters() {
+  const setGenreId = useGameQueryStore((state) => state.setGenreId);
+  const selectedGenreId = useGameQueryStore((state) => state.gameQuery.genreId);
   const genre = useGenre(selectedGenreId);
 
   if (!selectedGenreId) return null;
@@ -16,7 +14,7 @@ function SelectedFilters({ selectedGenreId, onSelectGenre }: Props) {
     <HStack>
       <Tag borderRadius="full" variant="solid" size="lg">
         <TagLabel>Genre: {genre?.name}</TagLabel>
-        <TagCloseButton onClick={() => onSelectGenre()} />
+        <TagCloseButton onClick={() => setGenreId()} />
       </Tag>
     </HStack>
   );
