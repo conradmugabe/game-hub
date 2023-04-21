@@ -1,6 +1,9 @@
-import { Heading, Spinner, Text } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import DefinitionItem from "../components/DefinitionItem";
 import ExpandableText from "../components/ExpandableText";
+import GameAttributes from "../components/GameAttributes";
+import GameCriticScore from "../components/GameCriticScore";
 
 import useGame from "../hooks/useGame";
 
@@ -13,6 +16,7 @@ export default function GameDetailsPage() {
       <>
         <Heading>{game.name}</Heading>
         <ExpandableText text={game.description_raw} />
+        <GameAttributes game={game} />
       </>
     );
 
