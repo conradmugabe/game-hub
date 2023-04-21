@@ -1,6 +1,7 @@
 import { Heading, List } from "@chakra-ui/react";
 
-import useGenres, { Genre } from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
+import { Genre } from "../entities/Genre";
 import useGameQueryStore from "../store";
 import GenreListItem from "./GenreListItem";
 import SkeletonGenreListItem from "./SkeletonGenreListItem";

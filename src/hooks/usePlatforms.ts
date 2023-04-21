@@ -2,12 +2,7 @@ import ms from "ms";
 import { useQuery } from "@tanstack/react-query";
 
 import HttpService from "../services/api.client.service";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from "../entities/Platform";
 
 const httpService = new HttpService<Platform>("/platforms/lists/parents");
 
