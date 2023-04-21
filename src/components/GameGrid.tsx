@@ -9,14 +9,7 @@ import GameCardContainer from "./GameCardContainer";
 import SkeletonGameCard from "./SkeletonGameCard";
 
 function GameGrid() {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    isLoading,
-  } = useGames();
+  const { data, error, fetchNextPage, hasNextPage, isLoading } = useGames();
 
   const fetchedGamesCount =
     data?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
@@ -27,12 +20,8 @@ function GameGrid() {
     <InfiniteScroll
       dataLength={fetchedGamesCount}
       hasMore={!!hasNextPage}
-      next={fetchNextPage}
-      loader={
-        <Center>
-          <Spinner size="xl" />
-        </Center>
-      }
+      next={() => fetchNextPage()}
+      loader={<Spinner />}
     >
       <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} gap={6}>
         {isLoading &&
