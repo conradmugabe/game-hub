@@ -5,7 +5,7 @@ interface GameTrailerProps {
 }
 
 export default function GameTrailer({ gameId }: GameTrailerProps) {
-  const { data, error, isLoading } = useTrailers(gameId);
+  const { data, error } = useTrailers(gameId);
 
   if (data) {
     const firstVideo = data.results[0];

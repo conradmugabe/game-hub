@@ -21,7 +21,7 @@ export default function ExpandableText({
   const summary = expanded ? text : text.substring(0, limit) + "...";
 
   return (
-    <Text>
+    <Text textAlign="justify">
       {summary}
       <Button
         marginLeft={1}
