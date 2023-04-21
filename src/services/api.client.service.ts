@@ -18,6 +18,11 @@ class HttpService<T> {
     axiosInstance
       .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
+
+  getOne = (id: string | number) =>
+    axiosInstance
+      .get<T>(this.endpoint + "/" + id)
+      .then((response) => response.data);
 }
 
 export default HttpService;

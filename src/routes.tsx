@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import ErrorPage from "./pages/ErrorPage";
 import GameDetailsPage from "./pages/GameDetailsPage";
 import HomePage from "./pages/HomePage";
