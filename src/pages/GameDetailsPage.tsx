@@ -14,7 +14,11 @@ export default function GameDetailsPage() {
 
   if (game)
     return (
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+      <SimpleGrid
+        columns={{ base: 1, md: 2 }}
+        spacing={5}
+        padding={{ base: 3, md: 5 }}
+      >
         <GridItem>
           <Heading>{game.name}</Heading>
           <ExpandableText text={game.description_raw} />
